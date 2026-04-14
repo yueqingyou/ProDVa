@@ -1,6 +1,6 @@
 import inspect
 from collections.abc import Callable
-from typing import Any
+from typing import Any, TypedDict
 
 import torch
 import torch.nn as nn
@@ -15,14 +15,17 @@ from transformers import (
 from transformers.activations import get_activation
 from transformers.modeling_flash_attention_utils import FlashAttentionKwargs
 from transformers.modeling_outputs import CausalLMOutputWithPast
-from transformers.utils import LossKwargs
 from typing_extensions import Unpack
 
 from .configuration_dva import DVAConfig
 from ..utils.info_nce_loss import InfoNCE
 
 
-class KwargsForCausalLM(FlashAttentionKwargs, LossKwargs): ...
+class CausalLMLossKwargs(TypedDict, total=False):
+    pass
+
+
+class KwargsForCausalLM(FlashAttentionKwargs, CausalLMLossKwargs): ...
 
 
 # TODO DVAEmbeddingModel: sv embeddings (remove copy?) + phrase encoder
