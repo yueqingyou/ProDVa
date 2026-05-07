@@ -33,6 +33,9 @@ dvagen = "cli:main"
 [tool.setuptools.dynamic]
 version = { attr = "dvagen.__version__" }
 
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [tool.ruff]
 target-version = "py311"
 line-length = 119
